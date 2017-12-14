@@ -132,8 +132,7 @@ export default function createDetectElementResize(nonce) {
       keyframeprefix + 'animation: 1ms ' + animationName + '; ';
   }
 
-  var createStyles = function(element) {
-    var doc = element.ownerDocument;
+  var createStyles = function(doc) {
     if (!doc.getElementById('detectElementResize')) {
       //opacity:0 works around a chrome bug https://code.google.com/p/chromium/issues/detail?id=286360
       var css =
@@ -173,7 +172,7 @@ export default function createDetectElementResize(nonce) {
         if (elementStyle && elementStyle.position == 'static') {
           element.style.position = 'relative';
         }
-        createStyles(element);
+        createStyles(doc);
         element.__resizeLast__ = {};
         element.__resizeListeners__ = [];
         (element.__resizeTriggers__ = doc.createElement('div')).className =
