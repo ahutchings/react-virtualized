@@ -167,8 +167,7 @@ export default function createDetectElementResize(nonce) {
     } else {
       if (!element.__resizeTriggers__) {
         var doc = element.ownerDocument;
-        var win = doc.defaultView;
-        var elementStyle = win.getComputedStyle(element);
+        var elementStyle = _window.getComputedStyle(element);
         if (elementStyle && elementStyle.position == 'static') {
           element.style.position = 'relative';
         }
